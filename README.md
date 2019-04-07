@@ -22,7 +22,12 @@ Se requieren las siguientes librerías de python para poder ejecutar el código:
     * sys
     * time
 
-Adicionalmente es preciso
+Adicionalmente es preciso instalar las librerías relacionadas con el parseador utilizadas por BeautifulSoup:
+
+    * lxml 
+    * libxml2
+    * libxslt
+
 
 ## Ejecutando las pruebas ⚙️
 
@@ -42,12 +47,10 @@ Las herramientas usadas para crear el proyecto son:
 
 ## Wiki 📖
 
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
+Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/jmarquezd/NutriScraper/wiki)
 
 
 ## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
 * **Azucena González** - *azucenagm* 
 * **Jesús Márquez** - *jmarquez01*
