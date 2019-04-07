@@ -6,7 +6,7 @@ de la web BEDCA.
 
 ## Comenzando 🚀
 
-Se debe usar la opción clone del github para obtener una copia del proyecto en local
+Se debe usar la opción clone del github para obtener una copia del proyecto en local.
 
 
 
@@ -22,13 +22,9 @@ Se requieren las siguientes librerías de python para poder ejecutar el código:
     * sys
     * time
 
-```
-import datetime
-```
-
+Adicionalmente es preciso
 
 ## Ejecutando las pruebas ⚙️
-
 
 Para realizar una ejecución del NutriScraper, se debe lanzar el main sin parámetros,
 el fichero generado se creará en el mismo directorio donde esté el main.py 
