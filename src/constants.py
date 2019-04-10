@@ -44,11 +44,20 @@ CSV_HEADER = BASIC_LIST + DETAIL_LIST
 # Valor utilizado para campos sin información
 EMPTY = 'NA'
 
-# URl sobre la que se realizarán las peticiones de la página web de BEDCA
-URL = "http://www.bedca.net/bdpub/procquery.php"
+# URl de entrada de la página web de BEDCA
+HOME_URL = "http://www.bedca.net"
+
+# URl sobre la que se realizarán las peticiones
+URL = HOME_URL + "/bdpub/procquery.php"
+
+# Acceso al fichero robots.txt de la web(si existe)
+ROBOTS_URL = HOME_URL + "/robots.txt"
+
+# User agent del web scraper
+USER_AGENT = 'ws-uoc-pra1'
 
 # Cabeceras de la petición: se indica que el texto es XML y se facilita un user-agent
-HEADERS = {'Content-Type':'text/xml', 'User-Agent':'ws-uoc-pra1'}
+HEADERS = {'Content-Type':'text/xml', 'User-Agent':USER_AGENT}
 
 # Factor de retardo entre peticiones
 DELAY_FACTOR = 2

@@ -19,7 +19,7 @@ import csv
 import requests
 import sys
 import time
-
+import urllib.robotparser
 
 class NutriScraper:
     # Método constructor: crea el archivo de salida y genera las líneas de cabecera
@@ -27,10 +27,15 @@ class NutriScraper:
         # Se abre un fichero CSV para escribir los resultados del proceso de web scraping y se escriben los
         # campos de cabecera
         self._write2csv(constants.CSV_OUTPUT_FILE, constants.CSV_HEADER, 'w')
-    
+
     # Método que ejecuta el proceso de scraping: se conecta a la URL, descarga la información y gestiona su
     # procesamiento y volcado a fichero
     def execute(self):
+        # Se comprueba si el fichero robots.txt permite el acceso del web scraper
+        if not self._accessGranted():
+            print("Acceso no permitido por el fichero robots.txt. Se aborta el programa")
+            sys.exit(1)
+            
         # Se recogen todos los identificadores de los alimentos existentes
         print("Solicitando los identificadores de los alimentos")
         foodList = self._getFoodIds()
@@ -39,7 +44,21 @@ class NutriScraper:
         print("Iniciando la captura de los datos nutricionales de todos los alimentos")
         self._getFoodDetails(foodList)
 
-    # Realiza la petición 
+    # Método que comprueba si el user agent del web scraper programado puede acceder a la página de peticiones
+    # o no siguiendo las indicaciones del fichero robots.txt
+    def _accessGranted(self):
+        # Se crea un parseador de ficheros robots.txt
+        rp = urllib.robotparser.RobotFileParser()
+        
+        # Se asigna la URL completa donde debe estar el fichero robots.txt y se lee su contenido
+        rp.set_url(constants.ROBOTS_URL)
+        rp.read()
+        
+        # Devuelve si está permitido el acceso para el user-agent suministrado a la URL de peticiones. En caso
+        # de que no exista el fichero robots.txt, la función can_fetch devuelve True
+        return rp.can_fetch(constants.USER_AGENT, constants.URL)
+
+    # Método que realiza la petición suministrada por parámetro 
     def _getRequest(self, url, request, headers):      
         # Se intenta establecer la conexión: en caso de error, se interrumpirá la ejecución del programa
         try:
