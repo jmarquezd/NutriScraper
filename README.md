@@ -21,6 +21,7 @@ Se requieren las siguientes librerías de python para poder ejecutar el código:
     * requests
     * sys
     * time
+    * urllib.robotparser 
 
 Adicionalmente es preciso instalar las librerías relacionadas con el parseador utilizadas por BeautifulSoup:
 
